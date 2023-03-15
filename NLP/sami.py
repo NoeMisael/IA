@@ -7,11 +7,11 @@ response= request.get('http://www.cervantesvirtual.com/obra-visor/la-influencia-
 
 soup= BeautifulSoup(response.text,'html.parser')
 text=soup.get_text(strip=True)
-#print(text)
+print(text)
 from nltk.tokenize import word_tokenize
 tokens= word_tokenize(text,"spanish")
 tokens=[word.lower() for word in tokens if word.isalpha()]
-#print(tokens)
+print(tokens)
 
 freq =nltk.FreqDist(tokens)
 for key,val in freq.items():
@@ -22,3 +22,4 @@ import seaborn as sns
 sns.set()
 freq.plot(50,cumulative=False)
 #plt.savefig("image.png")
+
